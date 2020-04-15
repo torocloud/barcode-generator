@@ -1,0 +1,36 @@
+{
+    "info": {
+        "version": "1.0.0-SNAPSHOT"
+    },
+    "basePath": "/barcode",
+    "paths": {
+        "/generate": {
+            "post": {
+                "bodyParameter": {
+                    "name": "input",
+                    "description": "input"
+                },
+                "responses": {
+                    "200": {
+                        "body": "response",
+                        "description": "Returns a base64 encoded image"
+                    }
+                },
+                "operationType": "gloop",
+                "operationLocation": "service.GenerateBarcode"
+            }
+        },
+        "/formats": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "body": "barcodeFormats",
+                        "description": "Return a list of available barcode formats"
+                    }
+                },
+                "operationType": "gloop",
+                "operationLocation": "service.ListAllBarcodeFormats"
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "output": [
+        {
+            "name": "barcodeFormats",
+            "array": true
+        }
+    ],
+    "steps": [
+        {
+            "lines": [
+                {
+                    "type": "set",
+                    "expression": "['AZTEC',\n\t'CODABAR',\n\t'CODE_39',\n\t'CODE_93',\n\t'CODE_128',\n\t'DATA_MATRIX',\n\t'EAN_8',\n\t'EAN_13',\n\t'ITF',\n\t'MAXICODE',\n\t'PDF_417',\n\t'QR_CODE',\n\t'RSS_14',\n\t'RSS_EXPANDED',\n\t'UPC_A',\n\t'UPC_E',\n\t'UPC_EAN_EXTENSION']",
+                    "evaluate": true,
+                    "to": [
+                        "barcodeFormats"
+                    ]
+                }
+            ]
+        }
+    ]
+}

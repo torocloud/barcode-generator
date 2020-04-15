@@ -1,0 +1,124 @@
+{
+    "input": [
+        {
+            "name": "input",
+            "type": "model",
+            "gloopProperties": [
+                {
+                    "name": "text",
+                    "required": true,
+                    "allowNull": false
+                },
+                {
+                    "name": "barcodeFormat",
+                    "required": true,
+                    "allowNull": false,
+                    "choices": [
+                        "AZTEC",
+                        "CODABAR",
+                        "CODE_39",
+                        "CODE_93",
+                        "CODE_128",
+                        "DATA_MATRIX",
+                        "EAN_8",
+                        "EAN_13",
+                        "ITF",
+                        "MAXICODE",
+                        "PDF_417",
+                        "QR_CODE",
+                        "RSS_14",
+                        "RSS_EXPANDED",
+                        "UPC_A",
+                        "UPC_E",
+                        "UPC_EAN_EXTENSION"
+                    ]
+                },
+                {
+                    "name": "width",
+                    "type": "integer",
+                    "defaultValue": 100
+                },
+                {
+                    "name": "height",
+                    "type": "integer",
+                    "defaultValue": 100
+                }
+            ]
+        }
+    ],
+    "output": [
+        {
+            "name": "response",
+            "type": "model",
+            "reference": "io.toro.martini.api.APIResponse",
+            "gloopProperties": [
+                {
+                    "name": "barcode",
+                    "type": "model",
+                    "reference": "model.Barcode"
+                }
+            ]
+        }
+    ],
+    "steps": [
+        {
+            "type": "invokeCode",
+            "className": "service.BarcodeGenerator",
+            "methodName": "generateBarcodeFrom",
+            "parameters": [
+                "java.lang.String",
+                "java.lang.String",
+                "int",
+                "int"
+            ],
+            "inputs": [
+                {
+                    "from": [
+                        "input",
+                        "text"
+                    ],
+                    "to": [
+                        "text"
+                    ]
+                },
+                {
+                    "from": [
+                        "input",
+                        "barcodeFormat"
+                    ],
+                    "to": [
+                        "formatName"
+                    ]
+                },
+                {
+                    "from": [
+                        "input",
+                        "width"
+                    ],
+                    "to": [
+                        "width"
+                    ]
+                },
+                {
+                    "from": [
+                        "input",
+                        "height"
+                    ],
+                    "to": [
+                        "height"
+                    ]
+                }
+            ],
+            "outputs": [
+                {
+                    "from": [
+                        "response"
+                    ],
+                    "to": [
+                        "response"
+                    ]
+                }
+            ]
+        }
+    ]
+}
